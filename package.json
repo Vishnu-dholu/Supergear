@@ -1,0 +1,6 @@
+{
+	"dependencies": {
+		"react-multi-carousel": "^2.8.5",
+		"react-paginate": "^8.2.0"
+	}
+}
