@@ -4,7 +4,7 @@ import upload from "../lib/upload";
 import { doc, setDoc } from "firebase/firestore";
 import { auth, db } from "../lib/firebase";
 import Login from "./Login";
-import { Label } from "@headlessui/react";
+import Label from "./Label";
 import { MdPhotoLibrary } from "react-icons/md";
 
 const Registration = () => {
@@ -86,7 +86,7 @@ const Registration = () => {
             <div className="border-b border-b-white/10 pb-5">
               <div className="mt-5 grid grid-cols-1 gap-x-6 gap-y-5 sm:grid-cols-6">
                 <div className="sm:col-span-3">
-                  <Label title="First Name" htmlFor="firstName" />
+                  <Label title="First Name" htmlFor="firstName"></Label>
                   <input
                     type="text"
                     name="firstName"
@@ -94,7 +94,7 @@ const Registration = () => {
                   />
                 </div>
                 <div className="sm:col-span-3">
-                  <Label title="Last Name" htmlFor="lastName" />
+                  <Label title="Last Name" htmlFor="lastName"></Label>
                   <input
                     type="text"
                     name="lastName"
@@ -102,7 +102,7 @@ const Registration = () => {
                   />
                 </div>
                 <div className="sm:col-span-3">
-                  <Label title="Email address" htmlFor="email" />
+                  <Label title="Email address" htmlFor="email"></Label>
                   <input
                     type="email"
                     name="email"
@@ -110,7 +110,7 @@ const Registration = () => {
                   />
                 </div>
                 <div className="sm:col-span-3">
-                  <Label title="Password" htmlFor="password" />
+                  <Label title="Password" htmlFor="password"></Label>
                   <input
                     type="password"
                     name="password"
@@ -120,7 +120,7 @@ const Registration = () => {
                 <div className="col-span-full">
                   <div className="mt-2 flex items-center gap-x-3">
                     <div className="flex-1">
-                      <Label title="Cover photo" />
+                      <Label title="Cover photo"></Label>
                       <div className="mt-2 flex justify-center rounded-lg border border-dashed border-white/25 px-6 py-4">
                         <div className="flex flex-col items-center text-center">
                           <div className="w-14 h-1/4 border border-gray-600 rounded-full p-1">

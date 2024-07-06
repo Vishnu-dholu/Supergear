@@ -25,7 +25,7 @@ interface StoreType {
   addToCart: (product: ProductProps) => Promise<void>;
   decreaseQuantity: (productId: number) => void;
   removeFromCart: (productId: number) => void;
-  reserCart: () => void;
+  resetCart: () => void;
   favoriteProduct: CartProduct[];
   addToFavorite: (product: ProductProps) => Promise<void>;
   removeFromFavorite: (productId: number) => void;
@@ -127,7 +127,7 @@ export const store = create<StoreType>()(
         }));
       },
 
-      reserCart: () => {
+      resetCart: () => {
         set({ cartProduct: [] });
       },
       addToFavorite: (product: ProductProps) => {

@@ -22,7 +22,7 @@ const Product = () => {
   const [loading, setLoading] = useState(false);
   const [imgUrl, setImgUrl] = useState("");
   const [color, setColor] = useState("");
-  const { id } = useParams();
+  const { id } = useParams<{ id: string }>();
 
   const endpoint = id
     ? `${config.baseUrl}/products/${id}`
@@ -195,7 +195,11 @@ const Product = () => {
                 </p>
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
                   {allProducts?.map((item: ProductProps) => (
-                    <ProductCard item={item} key={item?._id} />
+                    <ProductCard
+                      item={item}
+                      key={item?._id}
+                      setSearchText={Text}
+                    />
                   ))}
                 </div>
               </div>

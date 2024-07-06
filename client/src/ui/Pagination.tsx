@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useState } from "react";
 import { ProductProps } from "../../type";
 import ProductCard from "./ProductCard";

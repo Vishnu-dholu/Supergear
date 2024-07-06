@@ -8,14 +8,23 @@ interface Props {
 }
 
 const PriceTag = ({ regularPrice, discountedPrice, className }: Props) => {
+  // Check if regularPrice or discountedPrice are undefined and handle accordingly
+  const isPriceDefined = (price: number | undefined): boolean => {
+    return price !== undefined && !isNaN(price);
+  };
+
   return (
     <div className={twMerge("flex items-center gap-2", className)}>
-      <p className="line-through text-gray-500 font-medium">
-        <FormattedPrice amount={regularPrice} />
-      </p>
-      <p className="font-bold text-skyText">
-        <FormattedPrice amount={discountedPrice} />
-      </p>
+      {isPriceDefined(regularPrice) && (
+        <p className="line-through text-gray-500 font-medium">
+          <FormattedPrice amount={regularPrice} />
+        </p>
+      )}
+      {isPriceDefined(discountedPrice) && (
+        <p className="font-bold text-skyText">
+          <FormattedPrice amount={discountedPrice} />
+        </p>
+      )}
     </div>
   );
 };

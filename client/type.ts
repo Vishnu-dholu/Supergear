@@ -53,8 +53,8 @@ export interface UserType {
   };
 }
 
-export interface OrderType {
-  orderItem: [ProductProps];
+export interface OrderTypes {
+  orderItems: [ProductProps];
   paymentId: string;
   paymentMethod: string;
   userEmail: string;
