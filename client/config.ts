@@ -7,7 +7,7 @@ const checkConfig = (server: string): Config | {} => {
   switch (server) {
     case "production":
       config = {
-        baseUrl: "",
+        baseUrl: "https://supergear-eta.vercel.app",
       };
       break;
     case "local":
