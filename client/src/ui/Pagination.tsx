@@ -1,9 +1,8 @@
-"use client";
 import { useEffect, useState } from "react";
-import { ProductProps } from "../../type";
-import ProductCard from "./ProductCard";
 import { config } from "../../config";
 import { getData } from "../lib";
+import { ProductProps } from "../../type";
+import ProductCard from "./ProductCard";
 import ReactPaginate from "react-paginate";
 
 interface ItemsProps {
@@ -36,19 +35,20 @@ const Pagination = () => {
     };
     fetchData();
   }, []);
-
   const itemsPerPage = 15;
   const [itemOffset, setItemOffset] = useState(0);
   const [itemStart, setItemStart] = useState(1);
-  const endOffset = itemOffset + itemStart;
-
+  const endOffset = itemOffset + itemsPerPage;
+  // console.log(`Loading items from ${itemOffset} to ${endOffset}`);
   const currentItems = products.slice(itemOffset, endOffset);
   const pageCount = Math.ceil(products.length / itemsPerPage);
 
   const handlePageClick = (event: any) => {
     const newOffset = (event.selected * itemsPerPage) % products.length;
     const newStart = newOffset + 1;
-
+    // console.log(
+    //   `User requested page number ${event.selected}, which is offset ${newOffset}`
+    // );
     setItemOffset(newOffset);
     setItemStart(newStart);
   };
@@ -70,8 +70,8 @@ const Pagination = () => {
           activeClassName="bg-black text-white"
         />
         <p>
-          Product from {itemStart} to {Math.min(endOffset, products?.length)} of{" "}
-          {products?.length}
+          Products from {itemStart} to {Math.min(endOffset, products?.length)}{" "}
+          of {products?.length}
         </p>
       </div>
     </>
