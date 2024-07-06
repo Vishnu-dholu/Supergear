@@ -22,7 +22,7 @@ const Items = ({ currentItems }: ItemsProps) => {
 
 const Pagination = () => {
   const [products, setProducts] = useState([]);
-
+  // console.log("hi");
   useEffect(() => {
     const fetchData = async () => {
       const endpoint = `${config?.baseUrl}/products`;
