@@ -13,7 +13,6 @@ import {
   TransitionChild,
 } from "@headlessui/react";
 import FormattedPrice from "./FormattedPrice";
-import PriceTag from "./PriceTag";
 
 interface Props {
   item: ProductProps;
@@ -69,11 +68,6 @@ const ProductCard = ({ item, setSearchText }: Props) => {
           <MdOutlineStarOutline />
           <MdOutlineStarOutline />
         </div>
-        <PriceTag
-          regularPrice={item?.regularPrice}
-          discountedPrice={item?.discountedPrice}
-        />
-
         <AddToCartBtn product={item} />
       </div>
       <Transition appear show={isOpen}>
