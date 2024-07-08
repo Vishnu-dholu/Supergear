@@ -2,31 +2,16 @@ import { Router } from "express";
 import Stripe from "stripe";
 const router = Router();
 
-// Load environment variables
-require("dotenv").config();
-
 const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
 
-if (!stripeSecretKey) {
-  throw new Error("Stripe secret key not found in environment variables");
-}
-
-const stripe = new Stripe(stripeSecretKey, {
-  apiVersion: "2024-06-20",
-});
-
 router.post("/checkout", async (req, res) => {
+  const stripe = new Stripe(stripeSecretKey, {
+    apiVersion: "2024-06-20",
+  });
   try {
-    const { items, email } = req.body;
+    const { items, email } = await req.body;
 
-    console.log("Received items:", items);
-    console.log("Received email:", email);
-
-    if (!items || !email) {
-      throw new Error("Items or email missing from request body");
-    }
-
-    const extractingItems = items.map((item) => ({
+    const extractingItems = await items.map((item) => ({
       quantity: item.quantity,
       price_data: {
         currency: "inr",
@@ -57,9 +42,7 @@ router.post("/checkout", async (req, res) => {
       id: session.id,
     });
   } catch (error) {
-    console.error("Error creating Stripe session:", error);
-    res.status(500).json({ error: error.message });
+    res.status(500).json({ error: error });
   }
 });
-
 export default router;
