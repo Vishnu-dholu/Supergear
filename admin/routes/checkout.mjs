@@ -9,7 +9,7 @@ router.post("/checkout", async (req, res) => {
     apiVersion: "2024-06-20",
   });
   try {
-    const { items, email } = req.body;
+    const { items, email } = await req.body;
 
     const extractingItems = await items.map((item) => ({
       quantity: item.quantity,
