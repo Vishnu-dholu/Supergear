@@ -29,8 +29,8 @@ router.post("/checkout", async (req, res) => {
       line_items: extractingItems,
       mode: "payment",
       success_url:
-        "https://supergear-three.vercel.app/success?session_id={CHECKOUT_SESSION_ID}",
-      cancel_url: "https://supergear-three.vercel.app/cancel",
+        "https://supergear-eta.vercel.app/success?session_id={CHECKOUT_SESSION_ID}",
+      cancel_url: "https://supergear-eta.vercel.app/cancel",
       metadata: {
         email,
       },
@@ -45,5 +45,4 @@ router.post("/checkout", async (req, res) => {
     res.status(500).json({ error: error });
   }
 });
-
 export default router;

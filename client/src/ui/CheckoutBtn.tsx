@@ -11,22 +11,32 @@ const CheckoutBtn = ({ products }: { products: ProductProps[] }) => {
 
   const handleCheckout = async () => {
     const stripe = await stripePromise;
-    const response = await fetch(`${config?.baseUrl}/checkout`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        items: products,
-        email: currentUser?.email,
-      }),
-    });
-    const checkoutSession = await response?.json();
-    const result: any = await stripe?.redirectToCheckout({
-      sessionId: checkoutSession.id,
-    });
-    if (result.error) {
-      window.alert(result?.error?.message);
+    try {
+      const response = await fetch(`${config?.baseUrl}/checkout`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          items: products,
+          email: currentUser?.email,
+        }),
+      });
+      const checkoutSession = await response?.json();
+
+      if (checkoutSession.success) {
+        const result: any = await stripe?.redirectToCheckout({
+          sessionId: checkoutSession.id,
+        });
+
+        if (result.error) {
+          window.alert(result?.error?.message);
+        }
+      } else {
+        console.error("Checkout session creation failed:", checkoutSession);
+      }
+    } catch (error) {
+      console.error("Error during checkout:", error);
     }
   };
   return (
