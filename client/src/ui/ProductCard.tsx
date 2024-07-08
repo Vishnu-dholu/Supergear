@@ -74,7 +74,7 @@ const ProductCard = ({ item, setSearchText }: Props) => {
           discountedPrice={item?.discountedPrice}
         />
 
-        <AddToCartBtn />
+        <AddToCartBtn product={item} />
       </div>
       <Transition appear show={isOpen}>
         <Dialog
