@@ -10,7 +10,7 @@ import Blog from "./ui/Blog";
 
 function App() {
   return (
-    <main>
+    <main className="p-1 sm:p-5">
       <BannerCategories />
       <HomeBanner />
       <Highlights />
